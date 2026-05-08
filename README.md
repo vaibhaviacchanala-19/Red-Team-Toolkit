@@ -2,7 +2,7 @@
 
 Production-style full-stack vulnerability assessment platform using real scanner output from Nmap, Nuclei, WhatWeb, VirusTotal, and AbuseIPDB.
 
-![Red Team Toolkit dashboard](https://raw.githubusercontent.com/vaibhaviacchanala-19/Red-Team-Toolkit/main/public/images/dashboard.png)
+![Red Team Toolkit dashboard](public/images/dashboard.png)
 
 ## What It Does
 
