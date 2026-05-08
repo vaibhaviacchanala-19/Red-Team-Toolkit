@@ -1,0 +1,10 @@
+node_modules/
+.env
+.env.*
+!.env.example
+*.log
+*.pdf
+scan-response.txt
+scan-error.log
+tools/nuclei/*.exe
+.DS_Store

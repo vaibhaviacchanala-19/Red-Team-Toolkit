@@ -1,0 +1,29 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://db:27017/redteamtoolkit
+      - VT_API_KEY=${VT_API_KEY}
+      - ABUSEIPDB_API_KEY=${ABUSEIPDB_API_KEY}
+      - NMAP_TOP_PORTS=${NMAP_TOP_PORTS:-100}
+      - NMAP_ENABLE_VULN_SCRIPTS=${NMAP_ENABLE_VULN_SCRIPTS:-true}
+      - NMAP_SCRIPTS=${NMAP_SCRIPTS:-vuln}
+      - NUCLEI_SEVERITIES=${NUCLEI_SEVERITIES:-low,medium,high,critical}
+      - NUCLEI_RATE_LIMIT=${NUCLEI_RATE_LIMIT:-30}
+    depends_on:
+      - db
+    restart: always
+
+  db:
+    image: mongo:7
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    restart: always
+
+volumes:
+  mongo-data:

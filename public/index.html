@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Red Team Toolkit</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">RT</div>
+      <div>
+        <strong>Red Team Toolkit</strong>
+        <span>Vulnerability Assessment Platform</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="scan-console glass">
+      <div class="console-copy">
+        <span class="eyebrow">Recon to Report</span>
+        <h1>Evidence-Based Security Assessment</h1>
+      </div>
+      <form id="scanForm" class="scan-form">
+        <input id="targetInput" type="text" autocomplete="off" placeholder="example.com or 8.8.8.8" required>
+        <button id="scanBtn" type="submit">
+          <span class="btn-text">Start Scan</span>
+          <span class="loader hidden"></span>
+        </button>
+      </form>
+      <div id="scanProgress" class="scan-progress hidden">
+        <div class="progress-track"><div class="progress-fill"></div></div>
+        <span id="progressText">Initializing assessment pipeline</span>
+      </div>
+      <div id="errorMessage" class="error-message hidden"></div>
+    </section>
+
+    <section id="resultsArea" class="results hidden">
+      <div class="summary-grid">
+        <article class="summary-card glass risk-card">
+          <span class="label">Risk Score</span>
+          <div class="gauge" id="scoreGauge">
+            <span id="resScore">0</span>
+          </div>
+          <strong id="resRating">-</strong>
+        </article>
+        <article class="summary-card glass">
+          <span class="label">Target</span>
+          <strong id="resTarget">-</strong>
+          <small id="resIP">-</small>
+        </article>
+        <article class="summary-card glass">
+          <span class="label">Vulnerabilities</span>
+          <strong id="totalVulns">0</strong>
+          <small id="severityLine">0 critical, 0 high</small>
+        </article>
+        <article class="summary-card glass">
+          <span class="label">Reputation</span>
+          <strong id="intelStatus">Unknown</strong>
+          <small id="intelSummary">Threat intel unavailable</small>
+        </article>
+      </div>
+
+      <nav class="tabs glass">
+        <button class="tab-btn active" data-tab="overview">Overview</button>
+        <button class="tab-btn" data-tab="vulnerabilities">Vulnerabilities</button>
+        <button class="tab-btn" data-tab="ports">Ports & Services</button>
+        <button class="tab-btn" data-tab="technologies">Technologies</button>
+        <button class="tab-btn" data-tab="threatIntel">Threat Intel</button>
+        <button class="tab-btn" data-tab="fullReport">Full Report</button>
+      </nav>
+
+      <section id="overview" class="tab-content active glass">
+        <div class="overview-layout">
+          <div>
+            <h2>Top Findings</h2>
+            <div id="topFindings" class="finding-list"></div>
+          </div>
+          <div>
+            <h2>Recommendations</h2>
+            <ul id="recList" class="data-list"></ul>
+          </div>
+        </div>
+        <div class="actions">
+          <button id="exportBtn" class="ghost-btn">Export JSON</button>
+          <button id="pdfBtn" class="ghost-btn">Export PDF</button>
+        </div>
+        <div class="diagnostics-block">
+          <h2>Scanner Status</h2>
+          <div id="scannerDiagnostics" class="diagnostics-grid"></div>
+        </div>
+      </section>
+
+      <section id="vulnerabilities" class="tab-content glass">
+        <div id="vulnList" class="finding-list"></div>
+      </section>
+
+      <section id="ports" class="tab-content glass">
+        <table class="data-table">
+          <thead>
+            <tr><th>Port</th><th>Service</th><th>Version</th><th>State</th></tr>
+          </thead>
+          <tbody id="portsBody"></tbody>
+        </table>
+      </section>
+
+      <section id="technologies" class="tab-content glass">
+        <div id="techList" class="pill-grid"></div>
+      </section>
+
+      <section id="threatIntel" class="tab-content glass">
+        <div id="intelGrid" class="intel-grid"></div>
+      </section>
+
+      <section id="fullReport" class="tab-content glass">
+        <div class="pdf-report-panel">
+          <div>
+            <h2>PDF Security Report</h2>
+            <p id="pdfReportSummary">Run a scan to generate a professional PDF report.</p>
+          </div>
+          <button id="fullReportPdfBtn" class="ghost-btn">Download PDF Report</button>
+        </div>
+        <div id="reportPreview" class="report-preview"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
