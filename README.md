@@ -94,3 +94,7 @@ For better vulnerability coverage, keep Nuclei templates fresh and leave `NMAP_E
 ## Authorization
 
 Use this toolkit only on systems you own or are explicitly authorized to test. Unauthorized scanning can be illegal.
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
